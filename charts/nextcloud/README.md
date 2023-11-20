@@ -387,12 +387,6 @@ nextcloud:
 
     - name: "OBJECTSTORE_S3_USEPATH_STYLE"
       value: "true"
-
-    - name: "OBJECTSTORE_S3_SSE_C_KEY"
-      valueFrom:
-        secretKeyRef:
-          name: my-existing-kubernetes-secret
-          key: S3_ENCRYPTION_KEY
 ```
 
 ## Multiple config.php file
