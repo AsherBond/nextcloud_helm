@@ -155,6 +155,7 @@ The following table lists the configurable parameters of the nextcloud chart and
 | `nextcloud.extraVolumeMounts`                               | specify additional volume mounts for the NextCloud pod                                              | `{}`                       |
 | `nextcloud.securityContext`                                 | Optional security context for the NextCloud container                                               | `nil`                      |
 | `nextcloud.podSecurityContext`                              | Optional security context for the NextCloud pod (applies to all containers in the pod)              | `nil`                      |
+| `nextcloud.postgreSqlInitContainer.securityContext`         | Set postgresql initContainer securityContext parameters.                                            | `{}`                       |
 | `nginx.enabled`                                             | Enable nginx (requires you use php-fpm image)                                                       | `false`                    |
 | `nginx.image.repository`                                    | nginx Image name, e.g. use `nginxinc/nginx-unprivileged` for rootless container                     | `nginx`                    |
 | `nginx.image.tag`                                           | nginx Image tag                                                                                     | `alpine`                   |
@@ -548,8 +549,8 @@ ingress:
 
 ## Hugepages
 
-If your node has hugepages enabled, but you do not map any into the container, it could fail to start with a bus error in Apache. This is due
-to Apache attempting to memory map a file and use hugepages. The fix is to either disable huge pages on the node or map hugepages into the container:
+If your node has hugepages enabled, but you do not map any into the container, it could fail to start with a bus error. This is due
+to your webserver attempting to memory map a file and use hugepages. This can happen in both the apache and fpm images. The fix is to either disable huge pages on the node or map hugepages into the container:
 
 ```yaml
 nextcloud:
