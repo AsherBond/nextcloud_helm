@@ -226,7 +226,7 @@ The following table lists the configurable parameters of the nextcloud chart and
 | `service.annotations`                                       | Annotations for service type                                                                        | `{}`                                                         |
 | `service.nodePort`                                          | NodePort for service type NodePort                                                                  | `nil`                                                        |
 | `service.ipFamilies`                                        | Set ipFamilies as in k8s service objects                                                            | `nil`                                                        |
-| `service.ipFamyPolicy`                                      | define IP protocol bindings as in k8s service objects                                               | `nil`                                                        |
+| `service.ipFamilyPolicy`                                    | define IP protocol bindings as in k8s service objects                                               | `nil`                                                        |
 | `service.sessionAffinity`                                   | Kubernetes service Session Affinity                                                                 | `nil`                                                        |
 | `service.sessionAffinityConfig`                             | Kubernetes service Session Affinity configuration                                                   | `{}`                                                         |
 | `phpClientHttpsFix.enabled`                                 | Sets OVERWRITEPROTOCOL for https ingress redirect                                                   | `false`                                                      |
@@ -392,12 +392,14 @@ Nextcloud will *not* delete the PVCs when uninstalling the helm chart.
 | ----------------------------------------- | ---------------------------------------------------- | --------------- |
 | `persistence.enabled`                     | Enable persistence using PVC                         | `false`         |
 | `persistence.annotations`                 | PVC annotations                                      | `{}`            |
+| `persistence.labels`                    | PVC labels                                      | `{}`            |
 | `persistence.storageClass`                | PVC Storage Class for nextcloud volume               | `nil`           |
 | `persistence.existingClaim`               | An Existing PVC name for nextcloud volume            | `nil`           |
 | `persistence.accessMode`                  | PVC Access Mode for nextcloud volume                 | `ReadWriteOnce` |
 | `persistence.size`                        | PVC Storage Request for nextcloud volume             | `8Gi`           |
 | `persistence.nextcloudData.enabled`       | Create a second PVC for the data folder in nextcloud | `false`         |
 | `persistence.nextcloudData.annotations`   | see `persistence.annotations`                        | `{}`            |
+| `persistence.nextcloudData.labels`       | see `persistence.labels`                             | `{}`            |
 | `persistence.nextcloudData.storageClass`  | see `persistence.storageClass`                       | `nil`           |
 | `persistence.nextcloudData.existingClaim` | see `persistence.existingClaim`                      | `nil`           |
 | `persistence.nextcloudData.accessMode`    | see `persistence.accessMode`                         | `ReadWriteOnce` |
